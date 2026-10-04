@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iGOT karmayogi</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header class="main">
+        <div class="nav">
+            <img src="igot.png" alt="iGOT karmayogi" id="nav-logo">
+            <nav class="nav-bar">
+                <a href="#" id="link-home" class="active">home</a>
+                <a href="#" id="link-about">about</a>
+                <a href="#" id="link-roadmap">Generate Roadmap</a>
+                <a href="#" id="link-resume">Resume Analyzer</a>
+            </nav>
+            <div>
+                <button class="nav-button" id="open-signup-btn">Sign Up</button>
+                <button class="nav-button" id="open-login-btn">Log In</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div id="section-home" class="view-section">
+            <div class="hero">
+                <img src="data.png" alt="data" class="flip-img">
+                <div class="hero-text">
+                    <h1>Welcome to iGOT karmayogi</h1>
+                    <p>iGOT Karmayogi is a national portal designed for capacity building of government officials, offering role-based continuous learning, skill assessment, and personalized career growth tracks.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="section-about" class="view-section hidden">
+            <div class="card-box">
+                <h2>About iGOT Karmayogi</h2>
+                <p>Civil services competencies assessment and digital ecosystem for public officials.</p>
+            </div>
+        </div>
+
+        <div id="section-roadmap" class="view-section hidden">
+            <div class="card-box">
+                <h2>AI Roadmap Generator</h2>
+                <div class="form-group">
+                    <label for="ai-role">Enter Target Role or Goal:</label>
+                    <input type="text" id="ai-role" placeholder="e.g. Cybersecurity Analyst / Data Specialist">
+                </div>
+                <button class="submit-btn" id="generate-roadmap-btn">Generate AI Roadmap</button>
+                <div id="roadmap-result" class="result-box hidden"></div>
+            </div>
+        </div>
+
+        <div id="section-resume" class="view-section hidden">
+            <div class="card-box">
+                <h2>AI Resume Analyzer</h2>
+                <div class="form-group">
+                    <label for="resume-input">Paste Resume Text / Profile Details:</label>
+                    <textarea id="resume-input" rows="6" placeholder="Paste your resume contents here..."></textarea>
+                </div>
+                <button class="submit-btn" id="analyze-resume-btn">Analyze Resume</button>
+                <div id="resume-result" class="result-box hidden"></div>
+            </div>
+        </div>
+    </main>
+
+    <div id="modal-overlay" class="modal-overlay hidden">
+        <div class="form-card" id="signup-card">
+            <span class="close-btn">&times;</span>
+            <h2>Create Your Account</h2>
+            <p class="form-subtitle">Join iGOT Karmayogi Portal</p>
+
+            <form id="signup-form">
+                <div class="form-group">
+                    <label for="fullname">Full Name</label>
+                    <input type="text" id="fullname" name="fullname" placeholder="Enter your full name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Official Email ID</label>
+                    <input type="email" id="email" name="email" placeholder="example@gov.in" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="ministry">Select Ministry</label>
+                    <select id="ministry" name="ministry" required>
+                        <option value="" disabled selected>-- Select Ministry --</option>
+                        <option value="home-affairs">Ministry of Home Affairs</option>
+                        <option value="external-affairs">Ministry of External Affairs</option>
+                        <option value="finance">Ministry of Finance</option>
+                        <option value="defence">Ministry of Defence</option>
+                        <option value="education">Ministry of Education</option>
+                        <option value="electronics-it">Ministry of Electronics and IT</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="department">Select Department</label>
+                    <select id="department" name="department" required>
+                        <option value="" disabled selected>-- Select Department --</option>
+                        <option value="dept-higher-edu">Department of Higher Education</option>
+                        <option value="dept-revenue">Department of Revenue</option>
+                        <option value="dept-personnel">Department of Personnel & Training</option>
+                        <option value="dept-telecom">Department of Telecommunications</option>
+                        <option value="other">Other / Autonomous Body</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="designation">Designation / Role</label>
+                    <input type="text" id="designation" name="designation" placeholder="e.g. Assistant Section Officer" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Create a strong password" required>
+                </div>
+
+                <button type="submit" class="submit-btn">Register</button>
+            </form>
+
+            <div class="form-footer">
+                <p>Already have an account? <span id="switch-to-login" class="link-label">Log In</span></p>
+            </div>
+        </div>
+
+        <div class="form-card hidden" id="login-card">
+            <span class="close-btn">&times;</span>
+            <h2>Welcome Back</h2>
+            <p class="form-subtitle">Log in to iGOT Karmayogi Portal</p>
+
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="login-email">Official Email ID</label>
+                    <input type="email" id="login-email" name="email" placeholder="example@gov.in" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="login-password">Password</label>
+                    <input type="password" id="login-password" name="password" placeholder="Enter your password" required>
+                </div>
+
+                <button type="submit" class="submit-btn">Log In</button>
+            </form>
+
+            <div class="form-footer">
+                <p>Don't have an account? <span id="switch-to-signup" class="link-label">Sign Up</span></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
